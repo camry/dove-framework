@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DoveFramework\\": "src/DoveFramework/",
+            "DoveFramework\\": "src/DoveFramework/"
         }
     },
     "repositories": {

@@ -1,0 +1,6 @@
+* text eol=lf
+
+*.png binary
+*.jpg binary
+*.lock binary
+*.phar binary

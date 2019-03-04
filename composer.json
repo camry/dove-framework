@@ -1,0 +1,41 @@
+{
+    "name": "camry/dove-framework",
+    "description": "基于 php7 swoole 的项目基础框架",
+    "authors": [
+        {
+            "name": "Camry Chen",
+            "email": "camry.chen@foxmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "nesbot/carbon": "2.14.0",
+        "twig/twig": "2.6.2",
+        "symfony/event-dispatcher": "4.2.3",
+        "symfony/console": "4.2.3",
+        "symfony/finder": "4.2.3",
+        "symfony/process": "4.2.3",
+        "nette/mail": "3.0.0",
+        "phpunit/phpunit": "8.0.4",
+        "pda/pheanstalk": "4.0.0",
+        "mtdowling/cron-expression": "1.2.1",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DoveFramework\\": "src/DoveFramework/",
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "config": {
+        "secure-http": false,
+        "optimize-autoloader": true
+    }
+}

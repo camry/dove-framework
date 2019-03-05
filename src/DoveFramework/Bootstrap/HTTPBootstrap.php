@@ -87,8 +87,6 @@ class HTTPBootstrap extends ProcessBootstrap {
             }
         }
 
-        echo 'start...', PHP_EOL;
-
         $this->serv->start();
     }
 

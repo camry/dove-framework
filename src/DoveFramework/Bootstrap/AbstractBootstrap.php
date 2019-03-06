@@ -258,9 +258,12 @@ abstract class AbstractBootstrap {
      */
     final function initContext(): void {
         if (false === $this->context_initialized) {
-            $this->context = new DefaultContext($this);
+            if (!$this->context)
+                $this->context = new DefaultContext($this);
 
-            $this->context->initialize();
+            if ($this->context) {
+                $this->context->initialize();
+            }
 
             $this->context_initialized = true;
         }

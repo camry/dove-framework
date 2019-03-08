@@ -1,8 +1,8 @@
 <?php
 namespace DoveFramework\Bootstrap;
 
-use DoveFramework\Context\SwooleProcess;
 use DoveFramework\Context\AbstractSwooleProcessBase;
+use DoveFramework\Context\SwooleProcess;
 use DoveFramework\Exceptions\ConfigurationException;
 use DoveFramework\Exceptions\TypeException;
 use DoveFramework\Interfaces\ISwooleHTTPHandler;
@@ -79,7 +79,7 @@ class HTTPBootstrap extends AbstractSwooleBootstrap {
             foreach ($this->processes as $process) {
                 $cls_n = $process->getProcessName();
 
-                for ($i = 0; $i < $process->getThreadNum(); $i++) {
+                for ($i = 0; $i < $process->getProcessNum(); $i++) {
                     $cls_o = new $cls_n($this);
 
                     if (!($cls_o instanceof AbstractSwooleProcessBase))

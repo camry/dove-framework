@@ -2,7 +2,7 @@
 namespace DoveFramework\Context;
 
 /**
- * 自定义进程上下文类。
+ * Swoole 自定义进程描述对象。
  *
  * @package       DoveFramework\Context
  * @author        Camry Chen <camry.chen@foxmail.com>
@@ -22,7 +22,7 @@ class SwooleProcess {
      *
      * @var int
      */
-    protected $thread_num = 1;
+    protected $process_num = 1;
 
     /**
      * 构造函数。
@@ -47,7 +47,7 @@ class SwooleProcess {
      *
      * @return int
      */
-    function getThreadNum(): int {
-        return $this->thread_num;
+    public function getProcessNum(): int {
+        return $this->process_num;
     }
 }

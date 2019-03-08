@@ -73,8 +73,8 @@ class HTTPBootstrap extends AbstractSwooleBootstrap {
         // 检测是否存在自定义工作进程？
         if ($cfgs['http']['enable_user_process']) {
             // 检查是否设置了进程管理器 ...
-            if ($this->process_manager instanceof ISwooleProcessManager)
-                call_user_func_array($this->process_manager . '::handle', [$this, $this->swoole]);
+            if ($this->process_manager)
+                call_user_func_array($this->process_manager . '::handle', [$this, $this->serv]);
 
             foreach ($this->processes as $process) {
                 $cls_n = $process->getProcessName();

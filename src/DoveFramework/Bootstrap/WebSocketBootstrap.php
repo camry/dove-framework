@@ -9,7 +9,7 @@ namespace DoveFramework\Bootstrap;
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-class WebSocketBootstrap extends AbstractBootstrap {
+class WebSocketBootstrap extends AbstractSwooleBootstrap {
     /**
      * 初始化完成调用方法。
      */

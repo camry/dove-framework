@@ -2,7 +2,7 @@
 namespace DoveFramework\Bootstrap;
 
 use DoveFramework\Context\SwooleProcess;
-use DoveFramework\Context\SwooleProcessBase;
+use DoveFramework\Context\AbstractSwooleProcessBase;
 use DoveFramework\Exceptions\ConfigurationException;
 use DoveFramework\Exceptions\TypeException;
 use DoveFramework\Interfaces\ISwooleHTTPHandler;
@@ -82,7 +82,7 @@ class HTTPBootstrap extends AbstractSwooleBootstrap {
                 for ($i = 0; $i < $process->getThreadNum(); $i++) {
                     $cls_o = new $cls_n($this);
 
-                    if (!($cls_o instanceof SwooleProcessBase))
+                    if (!($cls_o instanceof AbstractSwooleProcessBase))
                         throw new TypeException('Swoole 自定义进程必须继承 SwooleProcessBase 类。');
 
                     $cls_o->setIndex($i);

@@ -16,7 +16,7 @@ use DoveFramework\Interfaces\IContext;
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-abstract class SwooleProcessBase extends \Swoole\Process {
+abstract class AbstractSwooleProcessBase extends \Swoole\Process {
     /**
      * 抽象启动器。
      *
@@ -82,7 +82,7 @@ abstract class SwooleProcessBase extends \Swoole\Process {
     /**
      * Swoole 进程启动回调。
      *
-     * @param SwooleProcessBase $process
+     * @param AbstractSwooleProcessBase $process
      */
     function handle($process) {
         // 标记应用系统已启动完毕 ...
@@ -94,7 +94,7 @@ abstract class SwooleProcessBase extends \Swoole\Process {
     /**
      * 启动进程。
      *
-     * @param SwooleProcessBase $process
+     * @param AbstractSwooleProcessBase $process
      */
     abstract function run($process): void;
 }

@@ -6,6 +6,7 @@ use DoveFramework\Context\SwooleProcessBase;
 use DoveFramework\Exceptions\ConfigurationException;
 use DoveFramework\Exceptions\TypeException;
 use DoveFramework\Interfaces\ISwooleHTTPHandler;
+use DoveFramework\Interfaces\ISwooleProcessManager;
 
 /**
  * 基于 Swoole 的 HTTP 服务启动器。
@@ -15,7 +16,7 @@ use DoveFramework\Interfaces\ISwooleHTTPHandler;
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-class HTTPBootstrap extends ProcessBootstrap {
+class HTTPBootstrap extends AbstractSwooleBootstrap {
     /**
      * Swoole HTTP 服务器实例。
      *
@@ -70,7 +71,11 @@ class HTTPBootstrap extends ProcessBootstrap {
         $this->serv->on('request', [$this->request_handler, 'onRequest']);
 
         // 检测是否存在自定义工作进程？
-        if ($this->processes) {
+        if ($cfgs['http']['enable_user_process']) {
+            // 检查是否设置了进程管理器 ...
+            if ($this->process_manager instanceof ISwooleProcessManager)
+                call_user_func_array($this->process_manager . '::handle', [$this, $this->swoole]);
+
             foreach ($this->processes as $process) {
                 $cls_n = $process->getProcessName();
 
@@ -116,18 +121,6 @@ class HTTPBootstrap extends ProcessBootstrap {
      */
     function setRequestHandler(ISwooleHTTPHandler $request_handler): HTTPBootstrap {
         $this->request_handler = $request_handler;
-
-        return $this;
-    }
-
-    /**
-     * 添加 Swoole 自定义进程。
-     *
-     * @param SwooleProcess ...$processes
-     * @return HTTPBootstrap
-     */
-    function addProcess(SwooleProcess ...$processes): HTTPBootstrap {
-        $this->processes = $processes;
 
         return $this;
     }

@@ -36,32 +36,14 @@ class TwigTemplate extends WebBase implements ITemplate {
     private $tpl_prefix = '';
 
     /**
-     * 指定 Swoole 请求对象。
-     *
-     * @var \Swoole\Http\Request
-     */
-    private $request;
-
-    /**
-     * 指定 Swoole 响应对象。
-     *
-     * @var \Swoole\Http\Response
-     */
-    private $response;
-
-    /**
      * 构造函数。
      *
-     * @param WebBootstrap          $bootstrap  指定 Web 启动器实例。
-     * @param \Swoole\Http\Request  $request    指定 Swoole 请求对象。
-     * @param \Swoole\Http\Response $response   指定 Swoole 响应对象。
-     * @param string                $tpl_prefix 模板目录前缀。
+     * @param WebBootstrap $bootstrap  指定 Web 启动器实例。
+     * @param string       $tpl_prefix 模板目录前缀。
      */
-    public function __construct(WebBootstrap $bootstrap, \Swoole\Http\Request $request, \Swoole\Http\Response $response, string $tpl_prefix) {
+    public function __construct(WebBootstrap $bootstrap, string $tpl_prefix) {
         parent::__construct($bootstrap);
 
-        $this->request    = $request;
-        $this->response   = $response;
         $this->tpl_prefix = $tpl_prefix;
     }
 
@@ -83,7 +65,8 @@ class TwigTemplate extends WebBase implements ITemplate {
         if (!($this->twig instanceof \Twig\Environment)) {
             $loader     = new \Twig\Loader\FilesystemLoader($this->tpl_prefix . 'tpl');
             $this->twig = new \Twig\Environment($loader, [
-                'cache' => $this->tpl_prefix . 'tpl_c',
+                'auto_reload' => true,
+                'cache'       => $this->tpl_prefix . 'tpl_c',
             ]);
         }
 
@@ -112,7 +95,7 @@ class TwigTemplate extends WebBase implements ITemplate {
      * @throws \Twig_Error_Syntax
      */
     function display(string $name): void {
-        $this->response->end($this->render($name, $this->data));
+        $this->render($name, $this->data);
     }
 
     /**

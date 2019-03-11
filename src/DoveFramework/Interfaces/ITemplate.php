@@ -30,9 +30,9 @@ interface ITemplate {
      * 输出模板内容。
      *
      * @param string $name 模板文件名称。
-     * @return void
+     * @return string
      */
-    function display(string $name): void;
+    function display(string $name): string;
 
     /**
      * 模板渲染。

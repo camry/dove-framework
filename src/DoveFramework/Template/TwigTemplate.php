@@ -90,12 +90,13 @@ class TwigTemplate extends WebBase implements ITemplate {
      * 输出模板内容。
      *
      * @param string $name
+     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    function display(string $name): void {
-        $this->render($name, $this->data);
+    function display(string $name): string {
+        return $this->render($name, $this->data);
     }
 
     /**

@@ -34,7 +34,7 @@ class DefaultContext extends AbstractBase implements IContext {
         else
             $timeout = 28800;
 
-        $this->dbo = new DbPdo($this->bootstrap, new DbParameter($cfgs['db']['driver'], $cfgs['db']['host'], $cfgs['db']['port'], $cfgs['db']['user'], $cfgs['db']['pass'], $cfgs['db']['name'], $cfgs['db']['charset'], ( string ) $cfgs['db']['socket'], $timeout));
+        $this->dbo = new DbPdo($this->bootstrap, new DbParameter($cfgs['db']['driver'], $cfgs['db']['host'], $cfgs['db']['port'], $cfgs['db']['user'], $cfgs['db']['pass'], $cfgs['db']['name'], $cfgs['db']['charset'], ( string ) $cfgs['db']['socket'], DbParameter::ISOLATION_READ_COMMITTED, $timeout));
     }
 
     /**

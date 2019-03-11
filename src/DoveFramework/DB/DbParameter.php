@@ -89,13 +89,6 @@ class DbParameter {
     private $timeout = 0;
 
     /**
-     * 间隔 X 秒检查一下连接可用性？（默认值：0,不检查）
-     *
-     * @var int
-     */
-    private $idle_timeout = 0;
-
-    /**
      * 构造函数。
      *
      * @param string $driver          数据库驱动名。（例如：mysql,pgsql,oci）
@@ -108,9 +101,8 @@ class DbParameter {
      * @param string $unix_socket     UNIX 套接字文件路径。
      * @param string $ioslation_level 事务隔离级别。（默认：READ COMMITTED）
      * @param int    $timeout         连接空闲超时。（秒）
-     * @param int    $idle_timeout    间隔 X 秒检查一下连接可用性？（默认值：0,不检查）
      */
-    public function __construct(string $driver, string $dbname, string $host, int $port, string $user, string $pass, string $charset, string $unix_socket, string $ioslation_level = self::ISOLATION_READ_COMMITTED, int $timeout = 0, int $idle_timeout = 0) {
+    public function __construct(string $driver, string $dbname, string $host, int $port, string $user, string $pass, string $charset, string $unix_socket, string $ioslation_level = self::ISOLATION_READ_COMMITTED, int $timeout = 0) {
         $this->driver          = $driver;
         $this->dbname          = $dbname;
         $this->host            = $host;
@@ -229,23 +221,5 @@ class DbParameter {
      */
     public function getTimeout(): int {
         return $this->timeout;
-    }
-
-    /**
-     * 是否启用空闲超时检查机制？
-     *
-     * @return bool
-     */
-    public function enableIdleTimeout(): bool {
-        return $this->idle_timeout > 0;
-    }
-
-    /**
-     * 获取检查连接可用性间隔时间。（秒）
-     *
-     * @return int
-     */
-    public function getIdleTimeout(): int {
-        return $this->idle_timeout;
     }
 }

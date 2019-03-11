@@ -105,7 +105,7 @@ class DbPdo extends AbstractBase implements IDb {
             try {
                 $this->dbo = new \PDO($dsn, $this->dbParameter->getUser(), $this->dbParameter->getPass(), $options);
 
-                if ($this->dbParameter->enableIdleTimeout()) {
+                if ($this->dbParameter->getTimeout() > 0) {
                     $this->dbo->exec(($this->dbParameter->hasIoslationLevel() ? 'SET SESSION TRANSACTION ISOLATION LEVEL ' . $this->dbParameter->getIoslationLevel() . ';' : '') . "SET SESSION wait_timeout = " . $this->dbParameter->getTimeout() . ", interactive_timeout = " . $this->dbParameter->getTimeout() . ";");
 
                     if ($this->bootstrap->cfg->isDebug())

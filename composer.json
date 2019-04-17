@@ -26,8 +26,7 @@
         "ext-bcmath": "*",
         "ext-redis": "*",
         "ext-ev": "*",
-        "ext-igbinary": "*",
-        "ext-memcached": "*"
+        "ext-igbinary": "*"
     },
     "autoload": {
         "psr-4": {

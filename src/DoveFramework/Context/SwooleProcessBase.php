@@ -1,11 +1,7 @@
 <?php
 namespace DoveFramework\Context;
 
-use DoveFramework\Bootstrap\AbstractBootstrap;
-use DoveFramework\Bootstrap\HTTPBootstrap;
 use DoveFramework\Bootstrap\SwooleBootstrap;
-use DoveFramework\Bootstrap\WebSocketBootstrap;
-use DoveFramework\Exceptions\TypeException;
 use DoveFramework\Interfaces\IContext;
 
 /**
@@ -16,20 +12,20 @@ use DoveFramework\Interfaces\IContext;
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-abstract class AbstractSwooleProcessBase extends \Swoole\Process {
+abstract class SwooleProcessBase extends \Swoole\Process {
     /**
-     * 抽象启动器。
+     * SwooleBootstrap 实例引用。
      *
-     * @var AbstractBootstrap
+     * @var SwooleBootstrap
      */
-    protected $bootstrap;
+    protected $bootstrap = NULL;
 
     /**
-     * 上下文管理器。
+     * 上下文管理器实例引用。
      *
      * @var IContext
      */
-    protected $ctx;
+    protected $ctx = NULL;
 
     /**
      * 进程索引序号。
@@ -41,13 +37,9 @@ abstract class AbstractSwooleProcessBase extends \Swoole\Process {
     /**
      * 构造函数。
      *
-     * @param AbstractBootstrap $bootstrap
-     * @throws TypeException
+     * @param SwooleBootstrap $bootstrap 指定 SwooleBootstrap 实例引用。
      */
-    public function __construct(AbstractBootstrap $bootstrap) {
-        if (!($bootstrap instanceof SwooleBootstrap || $bootstrap instanceof HTTPBootstrap || $bootstrap instanceof WebSocketBootstrap))
-            throw new TypeException('Bootstrap 对象必须是 SwooleBootstrap/WebSocketBootstrap/HTTPBootstrap 类型。');
-
+    function __construct(SwooleBootstrap $bootstrap) {
         $this->bootstrap = $bootstrap;
         $this->ctx       = $bootstrap->getContext();
 
@@ -57,8 +49,8 @@ abstract class AbstractSwooleProcessBase extends \Swoole\Process {
     /**
      * 析构函数。
      */
-    public function __destruct() {
-        unset($this->bootstrap, $this->ctx);
+    function __destruct() {
+        unset($this->ctx, $this->bootstrap);
     }
 
     /**
@@ -66,7 +58,7 @@ abstract class AbstractSwooleProcessBase extends \Swoole\Process {
      *
      * @return int
      */
-    public function getIndex(): int {
+    function getIndex(): int {
         return $this->index;
     }
 
@@ -74,15 +66,18 @@ abstract class AbstractSwooleProcessBase extends \Swoole\Process {
      * 设置进程索引序号。
      *
      * @param int $index
+     * @return SwooleProcessBase
      */
-    public function setIndex(int $index): void {
+    function setIndex(int $index): SwooleProcessBase {
         $this->index = $index;
+
+        return $this;
     }
 
     /**
      * Swoole 进程启动回调。
      *
-     * @param AbstractSwooleProcessBase $process
+     * @param SwooleProcessBase $process
      */
     function handle($process) {
         // 标记应用系统已启动完毕 ...
@@ -94,7 +89,7 @@ abstract class AbstractSwooleProcessBase extends \Swoole\Process {
     /**
      * 启动进程。
      *
-     * @param AbstractSwooleProcessBase $process
+     * @param SwooleProcessBase $process
      */
     abstract function run($process): void;
 }

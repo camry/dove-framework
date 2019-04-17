@@ -1,30 +1,30 @@
 <?php
 namespace DoveFramework\Context;
 
-use DoveFramework\Bootstrap\HTTPBootstrap;
+use DoveFramework\Bootstrap\SwooleBootstrap;
 
 /**
- *  抽象 AbstractSwooleHTTPBase 基类。
+ * 抽象 SwooleBase 类。
  *
  * @package       DoveFramework\Context
  * @author        Camry Chen <camry.chen@foxmail.com>
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-abstract class AbstractSwooleHTTPBase {
+abstract class SwooleBase {
     /**
-     * HTTPBootstrap 实例。
+     * SwooleBootstrap 实例。
      *
-     * @var HTTPBootstrap
+     * @var SwooleBootstrap
      */
     protected $bootstrap = NULL;
 
     /**
      * 构造函数。
      *
-     * @param HTTPBootstrap $bootstrap 指定 HTTPBootstrap 实例。
+     * @param SwooleBootstrap $bootstrap 指定 SwooleBootstrap 实例引用。
      */
-    function __construct(HTTPBootstrap $bootstrap) {
+    function __construct(SwooleBootstrap $bootstrap) {
         $this->bootstrap = $bootstrap;
     }
 

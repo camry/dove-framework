@@ -3,6 +3,7 @@ namespace DoveFramework\Bootstrap;
 
 use DoveFramework\Exceptions\TypeException;
 use DoveFramework\Helper\Util;
+use DoveFramework\Interfaces\IContext;
 use DoveFramework\Interfaces\IProcess;
 
 /**
@@ -22,10 +23,9 @@ class ProcessBootstrap extends AbstractBootstrap {
     }
 
     /**
-     * 执行路由解析。
+     * 解析请求/执行参数。
      */
     function parse(): void {
-        // TODO: Implement parse() method.
     }
 
     /**
@@ -33,6 +33,17 @@ class ProcessBootstrap extends AbstractBootstrap {
      */
     function validate(): void {
         // TODO: Implement validate() method.
+    }
+
+    /**
+     * 设置自定义上下文管理器。(注: 适用于应用层初始化全局对象的业务场景!)
+     *
+     * @param IContext $context 上下文管理器实例。
+     * @param bool     $defered 是否延迟初始化上下文对象？
+     * @return AbstractBootstrap
+     */
+    function setContext(IContext $context, bool $defered = false): AbstractBootstrap {
+        return parent::setContext($context, true);
     }
 
     /**

@@ -8,20 +8,26 @@
         }
     ],
     "require": {
-        "php": ">=7.2.0",
-        "nesbot/carbon": "2.14.0",
-        "twig/twig": "2.6.2",
-        "symfony/event-dispatcher": "4.2.3",
-        "symfony/console": "4.2.3",
-        "symfony/finder": "4.2.3",
-        "symfony/process": "4.2.3",
-        "nette/mail": "3.0.0",
-        "phpunit/phpunit": "8.0.4",
-        "pda/pheanstalk": "4.0.0",
+        "php": ">=7.3.0",
+        "nesbot/carbon": "1.36.1",
+        "twig/twig": "2.6.0",
+        "symfony/event-dispatcher": "3.4.20",
+        "symfony/console": "3.4.20",
+        "symfony/finder": "3.4.20",
+        "symfony/process": "3.4.20",
+        "nette/mail": "2.4.6",
+        "phpunit/phpunit": "7.5.1",
+        "pda/pheanstalk": "3.1.0",
         "mtdowling/cron-expression": "1.2.1",
         "ext-json": "*",
         "ext-curl": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-gettext": "*",
+        "ext-bcmath": "*",
+        "ext-redis": "*",
+        "ext-ev": "*",
+        "ext-igbinary": "*",
+        "ext-memcached": "*"
     },
     "autoload": {
         "psr-4": {

@@ -2,14 +2,14 @@
 namespace DoveFramework\Context;
 
 /**
- * Swoole 自定义多进程描述对象。
+ * SwooleProcessBase 进程组对象。
  *
  * @package       DoveFramework\Context
  * @author        Camry Chen <camry.chen@foxmail.com>
  * @version       1.0.0
  * @copyright (c) 2018-2019, Camry Chen
  */
-class SwooleProcessMulti extends SwooleProcess {
+final class SwooleProcessGroup extends SwooleProcess {
     /**
      * 构造函数。
      *

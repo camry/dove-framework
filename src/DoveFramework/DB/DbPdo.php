@@ -90,7 +90,7 @@ class DbPdo extends AbstractBase implements IDb {
                 \PDO::ATTR_AUTOCOMMIT               => $this->auto_commit,
                 \PDO::ATTR_CASE                     => \PDO::CASE_NATURAL,
                 \PDO::ATTR_DEFAULT_FETCH_MODE       => \PDO::FETCH_ASSOC,
-                \PDO::MYSQL_ATTR_INIT_COMMAND       => 'SET NAMES `' . $this->dbParameter->getCharset() . '`',
+                \PDO::MYSQL_ATTR_INIT_COMMAND       => 'SET NAMES ' . $this->dbParameter->getCharset(),
                 \PDO::ATTR_PERSISTENT               => false,
                 \PDO::ATTR_EMULATE_PREPARES         => false,
                 \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false,

@@ -26,13 +26,6 @@ class DbParameter {
     private $driver = 'mysql';
 
     /**
-     * 默认连接的数据库。
-     *
-     * @var string
-     */
-    private $dbname = 'test';
-
-    /**
      * 主机地址。
      *
      * @var string
@@ -59,6 +52,13 @@ class DbParameter {
      * @var string
      */
     private $pass = '';
+
+    /**
+     * 默认连接的数据库。
+     *
+     * @var string
+     */
+    private $dbname = 'test';
 
     /**
      * 字符集。
@@ -92,23 +92,23 @@ class DbParameter {
      * 构造函数。
      *
      * @param string $driver          数据库驱动名。（例如：mysql,pgsql,oci）
-     * @param string $dbname          默认连接的数据库。
      * @param string $host            主机地址。
      * @param int    $port            端口。
      * @param string $user            用户名。
      * @param string $pass            密码。
+     * @param string $dbname          默认连接的数据库。
      * @param string $charset         字符集。
      * @param string $unix_socket     UNIX 套接字文件路径。
      * @param string $ioslation_level 事务隔离级别。（默认：READ COMMITTED）
      * @param int    $timeout         连接空闲超时。（秒）
      */
-    public function __construct(string $driver, string $dbname, string $host, int $port, string $user, string $pass, string $charset, string $unix_socket, string $ioslation_level = self::ISOLATION_READ_COMMITTED, int $timeout = 0) {
+    public function __construct(string $driver, string $host, int $port, string $user, string $pass, string $dbname, string $charset, string $unix_socket, string $ioslation_level = self::ISOLATION_READ_COMMITTED, int $timeout = 0) {
         $this->driver          = $driver;
-        $this->dbname          = $dbname;
         $this->host            = $host;
         $this->port            = $port;
         $this->user            = $user;
         $this->pass            = $pass;
+        $this->dbname          = $dbname;
         $this->charset         = $charset;
         $this->unix_socket     = $unix_socket;
         $this->ioslation_level = $ioslation_level;
@@ -122,15 +122,6 @@ class DbParameter {
      */
     public function getDriver(): string {
         return $this->driver;
-    }
-
-    /**
-     * 获取默认连接的数据库。
-     *
-     * @return string
-     */
-    public function getDbname(): string {
-        return $this->dbname;
     }
 
     /**
@@ -167,6 +158,15 @@ class DbParameter {
      */
     public function getPass(): string {
         return $this->pass;
+    }
+
+    /**
+     * 获取默认连接的数据库。
+     *
+     * @return string
+     */
+    public function getDbname(): string {
+        return $this->dbname;
     }
 
     /**

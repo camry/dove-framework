@@ -1,6 +1,11 @@
 {
     "name": "camry/dove-framework",
     "description": "基于 php7 swoole 的项目基础框架",
+    "keywords": [
+        "framework",
+        "swoole"
+    ],
+    "license": "MIT",
     "authors": [
         {
             "name": "Camry Chen",

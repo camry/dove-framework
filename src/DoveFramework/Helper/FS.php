@@ -1,5 +1,5 @@
 <?php
-namespace DoveFramework\Utility;
+namespace DoveFramework\Helper;
 
 use DoveFramework\Exceptions\FileNotFoundException;
 use DoveFramework\Exceptions\IOException;
@@ -7,10 +7,10 @@ use DoveFramework\Exceptions\IOException;
 /**
  * 文件系统工具类。
  *
- * @package       DYGame\Utility
- * @author        Lei Lee <web.developer.network@gmail.com>
+ * @package       DoveFramework\Helper
+ * @author        Camry Chen <camry.chen@foxmail.com>
  * @version       1.0.0
- * @copyright (c) 2013-2017, Lei Lee
+ * @copyright (c) 2020-2021, Camry.Chen
  */
 class FS {
     /**

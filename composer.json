@@ -8,17 +8,17 @@
         }
     ],
     "require": {
-        "php": ">=7.2.0",
-        "nesbot/carbon": "2.16.3",
-        "twig/twig": "2.8.1",
-        "symfony/event-dispatcher": "4.2.6",
-        "symfony/console": "4.2.6",
-        "symfony/finder": "4.2.6",
-        "symfony/process": "4.2.6",
-        "nette/mail": "3.0.0",
-        "phpunit/phpunit": "8.1.2",
-        "pda/pheanstalk": "4.0.0",
-        "mtdowling/cron-expression": "1.2.1",
+        "php": ">=7.3.0",
+        "nesbot/carbon": "2.34.0",
+        "twig/twig": "3.0.3",
+        "symfony/event-dispatcher": "5.0.8",
+        "symfony/console": "5.0.8",
+        "symfony/finder": "5.0.8",
+        "symfony/process": "5.0.8",
+        "nette/mail": "3.1.2",
+        "phpunit/phpunit": "9.1.4",
+        "pda/pheanstalk": "4.0.1",
+        "mtdowling/cron-expression": "1.2.3",
         "ext-json": "*",
         "ext-curl": "*",
         "ext-pdo": "*",
@@ -28,6 +28,9 @@
         "ext-ev": "*",
         "ext-igbinary": "*"
     },
+    "require-dev": {
+        "camry/dove-framework-stubs": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "DoveFramework\\": "src/DoveFramework/"
@@ -36,7 +39,7 @@
     "repositories": {
         "packagist": {
             "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
+            "url": "https://mirrors.aliyun.com/composer/"
         }
     },
     "config": {
